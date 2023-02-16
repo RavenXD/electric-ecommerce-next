@@ -1,91 +1,85 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
+import Image from "next/image";
+import home from "../assets/img/home.png";
+import product from "../assets/img/product.png";
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
+function Product({ name, price, url }) {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
+    <div className="product">
+      <div className="product-card">
         <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+          src={`https:${url}`}
+          width={100}
+          height={100}
+          className="product-image"
+          alt="product"
         />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="product-info">
+        <p className="product-name">{name}</p>
+        <p className="product-price">{price}</p>
       </div>
+    </div>
+  );
+}
+
+async function getProducts() {
+  const res = await fetch(
+    `https://cdn.contentful.com/spaces/${process.env.SPACE_ID}/environments/master/entries/?select=&content_type=electricStoreItems`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.API_KEY}`,
+      },
+    }
+  );
+  const data = await res.json();
+  return data;
+}
+
+export default async function Home() {
+  const { items: products, includes } = await getProducts();
+
+  return (
+    <main id="main">
+      <div id="products-grid">
+        {products.map((product, index) => {
+          const productId = product.fields.productImages[0].sys.id;
+
+          const imageObject = includes.Asset.find(
+            (item) => item.sys.id == productId
+          );
+
+          return (
+            <Product
+              key={product.fields.productId}
+              name={product.fields.productName}
+              price={product.fields.price}
+              url={imageObject.fields.file.url}
+            />
+          );
+        })}
+      </div>
+      <footer id="footer-menu">
+        <ul id="footer-items">
+          <li className="footer-item">
+            <Image src={home} className="footer-item-icon" alt="home" />
+            <p className="footer-item-name">Home</p>
+          </li>
+          <li className="footer-item">
+            <Image src={home} className="footer-item-icon" alt="home" />
+            <p className="footer-item-name">Home</p>
+          </li>
+          <li className="footer-item">
+            <Image src={home} className="footer-item-icon" alt="home" />
+            <p className="footer-item-name">Home</p>
+          </li>
+          <li className="footer-item">
+            <Image src={home} className="footer-item-icon" alt="home" />
+            <p className="footer-item-name">Home</p>
+          </li>
+        </ul>
+      </footer>
     </main>
-  )
+  );
 }
