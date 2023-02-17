@@ -1,8 +1,8 @@
 import React from "react";
 
-async function getProduct(id) {
+async function ProductPage({ params }) {
   const res = await fetch(
-    `https://cdn.contentful.com/spaces/${process.env.SPACE_ID}/environments/master/entries/${id}`,
+    `https://cdn.contentful.com/spaces/${process.env.SPACE_ID}/environments/master/entries/${params.id}`,
     {
       method: "GET",
       headers: {
@@ -12,13 +12,8 @@ async function getProduct(id) {
     }
   );
 
-  const data = await res.json();
-
-  return data;
-}
-
-async function ProductPage({ params }) {
-  const product = await getProduct(params.id);
+  const product = await res.json();
+  // const product = await getProduct(params.id);
 
   return (
     <div>
