@@ -1,19 +1,22 @@
 import React from "react";
 import Image from "next/image";
 import product from "../assets/img/product.png";
+import Link from "next/link";
 
-function Product({ name, price, url }) {
+function Product({ name, price, url, productId }) {
   return (
     <div className="product">
-      <div className="product-card">
-        <Image
-          src={`https:${url}`}
-          width={100}
-          height={100}
-          className="product-image"
-          alt="product"
-        />
-      </div>
+      <Link href={`/${productId}`}>
+        <div className="product-card">
+          <Image
+            src={`https:${url}`}
+            width={80}
+            height={90}
+            className="product-image"
+            alt="product"
+          />
+        </div>
+      </Link>
       <div className="product-info">
         <p className="product-name">{name}</p>
         <p className="product-price">{price}</p>

@@ -35,6 +35,7 @@ export default async function Home() {
               name={product.fields.productName}
               price={product.fields.price}
               url={imageObject.fields.file.url}
+              productId={product.sys.id}
             />
           );
         })}
