@@ -58,7 +58,7 @@ async function ProductPage({ params }) {
           </p>
         </div>
         <Link
-          href={`https:/wa.me/923330508717?text=I would like to inquire about ${product.fields.productName}`}
+          href={`https://wa.me/923330508717?text=I would like to inquire about ${product.fields.productName}`}
           className="contact-whatsapp-btn"
         >
           <Image className="whatsapp-icon" src={whatsapp} alt="whatsaap icon" />
