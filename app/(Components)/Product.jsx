@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import product from "../assets/img/product.png";
+
 import Link from "next/link";
 
 function Product({ name, price, url, productId }) {

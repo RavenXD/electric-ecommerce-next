@@ -1,7 +1,6 @@
-import Image from "next/image";
-import home from "../assets/img/home.png";
-
-import Product from "./Product";
+import Product from "./(Components)/Product";
+import Search from "./(Components)/Search";
+import Filter from "./(Components)/Filter";
 
 async function getProducts() {
   const res = await fetch(
@@ -23,6 +22,9 @@ export default async function Home() {
 
   return (
     <main>
+      <Search />
+      <Filter />
+
       <div className="products-grid">
         {products.map((product, index) => {
           const productId = product.fields.productImages[0].sys.id;
@@ -40,26 +42,6 @@ export default async function Home() {
           );
         })}
       </div>
-      <footer className="footer-menu">
-        <ul className="footer-items">
-          <li className="footer-item">
-            <Image src={home} className="footer-item-icon" alt="home" />
-            <p className="footer-item-name">Home</p>
-          </li>
-          <li className="footer-item">
-            <Image src={home} className="footer-item-icon" alt="home" />
-            <p className="footer-item-name">Home</p>
-          </li>
-          <li className="footer-item">
-            <Image src={home} className="footer-item-icon" alt="home" />
-            <p className="footer-item-name">Home</p>
-          </li>
-          <li className="footer-item">
-            <Image src={home} className="footer-item-icon" alt="home" />
-            <p className="footer-item-name">Home</p>
-          </li>
-        </ul>
-      </footer>
     </main>
   );
 }
