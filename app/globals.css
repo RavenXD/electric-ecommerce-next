@@ -4,7 +4,22 @@
 * {
   font-family: "Roboto", system, sans-serif;
 }
+a:link { 
+  text-decoration: none;
+  cursor: pointer; 
 
+}
+a, a:visited {
+    color: inherit;
+}
+
+.loading{
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
 /* Navbar */
 
 

@@ -24,7 +24,6 @@ async function getProduct(id) {
 
 async function ProductPage({ params }) {
   const product = await getProduct(params.id);
-  // console.log(product.fields.url);
 
   return (
     <>
@@ -33,7 +32,7 @@ async function ProductPage({ params }) {
           <Image
             className="product-image"
             src={product.fields.url}
-            alt=""
+            alt="product image"
             width={80}
             height={120}
           />
@@ -45,7 +44,7 @@ async function ProductPage({ params }) {
           </div>
           <div className="rating">
             <p className="rating-text">Rating&nbsp;(5.0)</p>
-            <Image className="rating-stars" src={star} alt="rating" width={150} />
+            <Image className="rating-stars" src={star} alt="rating" width={150} height={150} />
           </div>
         </div>
         <div className="details-container">
