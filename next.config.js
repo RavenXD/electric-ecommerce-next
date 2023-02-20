@@ -8,6 +8,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "images.ctfassets.net",
+        hostname: "user-images.githubusercontent.com",
       },
     ],
   },
