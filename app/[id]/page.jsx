@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import whatsapp from "../../assets/whatsapp.png";
 import star from "../../assets/star.svg";
-import BackArrow from "@/assets/heroicons/backArrow";
 import { getProduct, getAsset } from "../../utils/apiRequests";
+import BackButton from "../(Components)/BackButton";
 
 async function ProductPage({ params }) {
   const product = await getProduct(params.id);
@@ -14,6 +14,7 @@ async function ProductPage({ params }) {
     <>
       <section className=" mt-24 mb-16 m-auto p-4 flex flex-col md:flex-row md:gap-6">
         <div className=" bg-[#F8F9F9] p-6 relative rounded-lg flex-1">
+          {/* Add Image Slider Here */}
           <Image
             className="w-full p-6"
             src={`https:${asset.fields.file.url}`}
@@ -22,9 +23,7 @@ async function ProductPage({ params }) {
             alt="product-image"
             priority
           />
-          <button className="absolute top-3 left-3 ">
-            <BackArrow />
-          </button>
+          <BackButton />
         </div>
 
         <div className="flex-1">
@@ -50,7 +49,7 @@ async function ProductPage({ params }) {
           <div className="flex justify-center mt-8">
             <Link
               className="flex bg-green-400 py-2 px-4 rounded-xl justify-center items-center"
-              href={`https://wa.me/${process.env.CONTACT_NUM}?text=I would like to inquire about ${product.fields.productName}`}
+              href={`https://wa.me/+923330508717?text=I would like to inquire about ${product.fields.productName}`}
             >
               <Image className="w-10 h-auto" src={whatsapp} alt="whatsaap icon" />
               <span className="text-white px-3 text-2xl">Ask on WhatsApp</span>
