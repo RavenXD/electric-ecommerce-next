@@ -5,21 +5,17 @@ import Link from "next/link";
 
 function Product({ name, price, url, productId }) {
   return (
-    <div className="product">
+    <div className="p-2 bg-[#F8F9F9] flex flex-col items-center ">
       <Link href={`/${productId}`}>
-        <div className="product-card">
-          <Image
-            src={`https:${url}`}
-            width={80}
-            height={90}
-            className="product-image"
-            alt="product"
-          />
-        </div>
+        <Image src={`https:${url}`} alt="product image" width={350} height={300} />
       </Link>
-      <div className="product-info">
-        <p className="product-name">{name}</p>
-        <p className="product-price">{price}</p>
+      <div className="pt-2 w-full">
+        <p className="font-bold">{name}</p>
+        <p className="text-xs text-gray-600">Shoe</p>
+        <p className="flex font-bold ">
+          <span className="line-through text-gray-600">${price}</span>
+          <span className="text-[#F29D38]">&nbsp;$150</span>
+        </p>
       </div>
     </div>
   );
