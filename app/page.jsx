@@ -2,6 +2,7 @@ import Product from "./(Components)/Product";
 import Categories from "./(Components)/Categories";
 import Featured from "./(Components)/Featured";
 import Header from "./(Components)/Header";
+import Footer from "./(Components)/Footer";
 
 import { getProducts } from "../utils/apiRequests";
 
@@ -30,6 +31,7 @@ export default async function Home() {
           })}
         </div>
       </main>
+      <Footer />
     </>
   );
 }

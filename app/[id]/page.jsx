@@ -13,8 +13,8 @@ async function ProductPage({ params }) {
 
   return (
     <>
-      <section className=" mt-2 mb-16 m-auto p-4 flex flex-col md:flex-row md:gap-6">
-        <div className=" bg-[#F8F9F9] p-6 relative rounded-lg flex-1">
+      <section className="mb-4 m-auto p-4 flex flex-col md:flex-row md:gap-6">
+        <div className=" bg-[#F8F9F9] p-6 relative rounded-t-2xl flex-1">
           {/* Add Image Slider Here */}
           <ProductSlider />
         </div>
@@ -48,8 +48,8 @@ async function ProductPage({ params }) {
               className="flex bg-green-400 py-2 px-4 rounded-3xl justify-center items-center"
               href={`https://wa.me/+923330508717?text=I would like to inquire about: %20%0A \*${product.fields.productName}\* %20%0A \_${product.fields.price}\_ %20%0A https:${asset.fields.file.url}`}
             >
-              <Image className="w-8 h-auto" src={whatsapp} alt="whatsaap icon" />
-              <span className="text-white px-3 text-xl">Ask on WhatsApp</span>
+              <Image className="w-6 h-auto " src={whatsapp} alt="whatsaap icon" />
+              <span className="text-white px-3 text-l">Ask on WhatsApp</span>
             </Link>
           </div>
         </div>

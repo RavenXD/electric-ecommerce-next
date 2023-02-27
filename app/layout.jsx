@@ -1,5 +1,4 @@
 import "./globals.css";
-import Footer from "./(Components)/Footer";
 
 export default function RootLayout({ children }) {
   return (
@@ -7,7 +6,6 @@ export default function RootLayout({ children }) {
       <head />
       <body className="max-w-7xl m-auto ">
         {children}
-        <Footer />
       </body>
     </html>
   );
