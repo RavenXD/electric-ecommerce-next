@@ -12,7 +12,7 @@ async function ProductPage({ params }) {
 
   return (
     <>
-      <section className=" mt-24 mb-16 m-auto p-4 flex flex-col md:flex-row md:gap-6">
+      <section className=" mt-2 mb-16 m-auto p-4 flex flex-col md:flex-row md:gap-6">
         <div className=" bg-[#F8F9F9] p-6 relative rounded-lg flex-1">
           {/* Add Image Slider Here */}
           <Image
@@ -37,22 +37,26 @@ async function ProductPage({ params }) {
             <Image className="px-1 " src={star} alt="rating" width={150} height={150} />
           </div>
 
+          <h2 className="text-xl pt-4 pb-2 font-bold">Category</h2>
+
+          <p className="text-gray-500 text">Fans</p>
+
           <h2 className="text-xl pt-4 pb-2 font-bold">Details</h2>
 
-          <p className="text-gray-500 text">
+          <p className="text-gray-500 text leading-7">
             Nike Dri-Fit is a polyester fabric designed to help you keep dry so you can more
             comfortably work harder, longer. Nike Dri-Fit is a polyester fabric designed to help you
             keep dry so you can more comfortably work harder, longer. Nike Dri-Fit is a polyester
             fabric designed to help you keep dry so you can more comfortably work harder, longer.
           </p>
 
-          <div className="flex justify-center mt-8">
+          <div className="flex justify-center mt-4">
             <Link
-              className="flex bg-green-400 py-2 px-4 rounded-xl justify-center items-center"
-              href={`https://wa.me/+923330508717?text=I would like to inquire about ${product.fields.productName}`}
+              className="flex bg-green-400 py-2 px-4 rounded-3xl justify-center items-center"
+              href={`https://wa.me/+923330508717?text=I would like to inquire about: %20%0A \*${product.fields.productName}\* %20%0A \_${product.fields.price}\_ %20%0A https:${asset.fields.file.url}`}
             >
-              <Image className="w-10 h-auto" src={whatsapp} alt="whatsaap icon" />
-              <span className="text-white px-3 text-2xl">Ask on WhatsApp</span>
+              <Image className="w-8 h-auto" src={whatsapp} alt="whatsaap icon" />
+              <span className="text-white px-3 text-xl">Ask on WhatsApp</span>
             </Link>
           </div>
         </div>
