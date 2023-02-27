@@ -7,7 +7,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 function Featured() {
   return (
-    <Carousel autoPlay={true} infiniteLoop={true}>
+    <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false}>
       <div className="mt-24 mx-4 flex justify-center ">
         <Image className="w-auto h-auto rounded-lg drop-shadow-md " src={featured} alt="featured" />
       </div>

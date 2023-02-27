@@ -43,7 +43,7 @@ async function ProductPage({ params }) {
 
           <h2 className="text-xl pt-4 pb-2 font-bold">Details</h2>
 
-          <p className="text-gray-500 text">
+          <p className="text-gray-500 text leading-7">
             Nike Dri-Fit is a polyester fabric designed to help you keep dry so you can more
             comfortably work harder, longer. Nike Dri-Fit is a polyester fabric designed to help you
             keep dry so you can more comfortably work harder, longer. Nike Dri-Fit is a polyester
