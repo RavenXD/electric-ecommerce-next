@@ -8,7 +8,6 @@ function Product({ name, price, url, productId }) {
     <div className="p-2 bg-[#F8F9F9] flex flex-col items-center ">
       <Link href={`/${productId}`}>
         <Image src={`https:${url}`} alt="product image" width={350} height={300} />
-      </Link>
       <div className="pt-2 w-full">
         <p className="font-bold">{name}</p>
         <p className="text-xs text-gray-600">Shoe</p>
@@ -17,6 +16,7 @@ function Product({ name, price, url, productId }) {
           <span className="text-[#F29D38]">&nbsp;$150</span>
         </p>
       </div>
+      </Link>
     </div>
   );
 }
