@@ -5,6 +5,7 @@ import whatsapp from "../../assets/whatsapp.png";
 import star from "../../assets/star.svg";
 import { getProduct, getAsset } from "../../utils/apiRequests";
 import BackButton from "../(Components)/BackButton";
+import ProductSlider from "../(Components)/ProductSlider";
 
 async function ProductPage({ params }) {
   const product = await getProduct(params.id);
@@ -15,15 +16,7 @@ async function ProductPage({ params }) {
       <section className=" mt-2 mb-16 m-auto p-4 flex flex-col md:flex-row md:gap-6">
         <div className=" bg-[#F8F9F9] p-6 relative rounded-lg flex-1">
           {/* Add Image Slider Here */}
-          <Image
-            className="w-full p-6"
-            src={`https:${asset.fields.file.url}`}
-            width={450}
-            height={400}
-            alt="product-image"
-            priority
-          />
-          <BackButton />
+          <ProductSlider />
         </div>
 
         <div className="flex-1">
