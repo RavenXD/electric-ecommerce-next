@@ -7,7 +7,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 const ProductSlider = () => {
   return (
-    <Carousel>
+    <Carousel showThumbs={false}>
       <Image
         className="w-full p-6"
         src="https://via.placeholder.com/150"
