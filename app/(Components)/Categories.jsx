@@ -19,7 +19,7 @@ const responsive = {
   // },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 3
+    items: 4
   }
 };
 
@@ -33,7 +33,7 @@ function Categories() {
       </div>
       <Carousel responsive={responsive} removeArrowOnDeviceType={["tablet", "mobile"]} className=" flex mx-4 justify-between">
         <button
-          className={` text-xs py-2 px-5 rounded-xl border text-gray-500 ${
+          className={` text-xs py-2  rounded-xl border text-gray-500 w-16 ${
             isActive == "All" ? " bg-black text-white" : ""
           }`}
           onClick={() => setActive("All")}
@@ -41,7 +41,7 @@ function Categories() {
           All
         </button>
         <button
-          className={` text-xs py-2 px-5 rounded-xl border text-gray-500 ${
+          className={` text-xs py-2  rounded-xl border text-gray-500 w-16 ${
             isActive == "Scissors" ? " bg-black text-white" : ""
           }`}
           onClick={() => setActive("Scissors")}
@@ -49,7 +49,7 @@ function Categories() {
           Scissors
         </button>
         <button
-          className={` text-xs py-2 px-5 rounded-xl border text-gray-500 ${
+          className={` text-xs py-2  rounded-xl border text-gray-500 w-16 ${
             isActive == "Pearls" ? " bg-black text-white" : ""
           }`}
           onClick={() => setActive("Pearls")}
@@ -57,14 +57,14 @@ function Categories() {
           Pearls
         </button>
         <button
-          className={` text-xs py-2 px-5 rounded-xl border text-gray-500 ${
+          className={` text-xs py-2  rounded-xl border text-gray-500 w-16 ${
             isActive == "Frill" ? " bg-black text-white" : ""
           }`}
           onClick={() => setActive("Frill")}
         >
           Frill
         </button><button
-          className={` text-xs py-2 px-5 rounded-xl border text-gray-500 ${
+          className={` text-xs py-2  rounded-xl border text-gray-500 w-16 ${
             isActive == "Scissors" ? " bg-black text-white" : ""
           }`}
           onClick={() => setActive("Scissors")}
@@ -72,7 +72,7 @@ function Categories() {
           Scissors
         </button>
         <button
-          className={` text-xs py-2 px-5 rounded-xl border text-gray-500 ${
+          className={` text-xs py-2  rounded-xl border text-gray-500 w-16 ${
             isActive == "Pearls" ? " bg-black text-white" : ""
           }`}
           onClick={() => setActive("Pearls")}
