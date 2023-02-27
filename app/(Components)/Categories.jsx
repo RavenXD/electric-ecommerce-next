@@ -6,7 +6,7 @@ function Categories() {
 
   return (
     <>
-      <div>
+      <div style={{ marginTop:'-25px'}}>
         <h3 className="m-4 text-2xl">Categories</h3>
       </div>
       <div className=" flex mx-4 justify-between ">

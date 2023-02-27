@@ -8,7 +8,7 @@ function Footer() {
   const pathname = usePathname();
 
   return (
-    <footer className=" relative ">
+    <footer>
       <div className="fixed max-w-7xl m-auto bottom-0 w-full flex py-3 px-10 justify-between items-center rounded-t-2xl border bg-white z-20">
         <Link href="/" className="flex flex-col items-center">
           <svg
