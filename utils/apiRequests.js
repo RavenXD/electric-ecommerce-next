@@ -30,6 +30,20 @@ export const getProduct = async (id) => {
   return data;
 };
 
+export const getAssets = async () => {
+  const res = await fetch(`${baseUrl}/${process.env.SPACE_ID}/environments/master/assets/`, {
+    cache: "no-store",
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.API_KEY}`,
+    },
+  });
+
+  const data = await res.json();
+  return data;
+};
+
 export const getAsset = async (id) => {
   const res = await fetch(`${baseUrl}/${process.env.SPACE_ID}/environments/master/assets/${id}`, {
     cache: "no-store",

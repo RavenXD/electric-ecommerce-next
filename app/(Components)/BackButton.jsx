@@ -10,7 +10,7 @@ function BackButton() {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
-        className="w-7 h-7"
+        className="w-8 h-10"
       >
         <path
           fillRule="evenodd"

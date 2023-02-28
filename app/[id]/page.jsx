@@ -1,14 +1,24 @@
-// import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import whatsapp from "../../assets/whatsapp.png";
 import star from "../../assets/star.svg";
-import { getProduct, getAsset } from "../../utils/apiRequests";
+import { getProduct, getAsset, getAssets } from "../../utils/apiRequests";
 import BackButton from "../(Components)/BackButton";
 import ProductSlider from "../(Components)/ProductSlider";
 
 async function ProductPage({ params }) {
   const product = await getProduct(params.id);
+  const assets = await getAssets();
+
+  const imageAssetList = [];
+  const assetsIds = product.fields.productImages.map((element) => element.sys.id);
+  assetsIds.forEach((id) => {
+    const asset = assets.items.find((asset) => asset.sys.id == id);
+    imageAssetList.push(asset);
+  });
+
+  const imageUrlList = imageAssetList.map((element) => element.fields.file.url);
+  console.log(imageUrlList);
   const asset = await getAsset(product.fields.productImages[0].sys.id);
 
   return (
@@ -16,7 +26,7 @@ async function ProductPage({ params }) {
       <section className="mb-4 m-auto p-4 flex flex-col md:flex-row md:gap-6">
         <div className=" bg-[#F8F9F9] p-6 relative rounded-t-2xl flex-1">
           {/* Add Image Slider Here */}
-          <ProductSlider />
+          <ProductSlider imageList={imageUrlList} />
         </div>
 
         <div className="flex-1">
