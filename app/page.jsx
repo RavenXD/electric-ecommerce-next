@@ -14,7 +14,7 @@ export default async function Home() {
       <Header />
       <Featured />
       <Categories />
-      <main className="m-4 mb-16 w-auto ">
+      <main className="m-4 mb-20 w-auto ">
         <div className=" grid gap-2 grid-cols-2">
           {products && products.map((product, index) => {
             const productId = product.fields.productImages[0].sys.id;
