@@ -1,7 +1,8 @@
-"use client";
-import React, { useState } from "react";
+// "use client";
+// import React, { useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { getCategories } from "../../utils/apiRequests";
 
 const responsive = {
   superLargeDesktop: {
@@ -23,8 +24,13 @@ const responsive = {
   }
 };
 
-function Categories() {
-  const [isActive, setActive] = useState("All");
+export default async function Categories() {
+  // const [isActive, setActive] = useState("All");
+
+  // const categories = fetchCategories.items[0].fields.productCategory
+
+  const { items: fetchCategories } = await getCategories();
+  console.log(fetchCategories)
 
   return (
     <>
@@ -32,87 +38,24 @@ function Categories() {
         <h3 className="m-4 text-2xl">Categories</h3>
       </div>
       <Carousel responsive={responsive} removeArrowOnDeviceType={["tablet", "mobile"]} className=" flex mx-4 justify-between h-16">
-        <button
-          className={` text-xs py-2  rounded-xl border text-gray-500 w-16 ${
-            isActive == "All" ? " bg-black text-white" : ""
-          }`}
-          onClick={() => setActive("All")}
-        >
+        <button>
           All
-        </button>
-        <button
-          className={` text-xs py-2  rounded-xl border text-gray-500 w-16 ${
-            isActive == "Scissors" ? " bg-black text-white" : ""
-          }`}
-          onClick={() => setActive("Scissors")}
-        >
-          Scissors
-        </button>
-        <button
-          className={` text-xs py-2  rounded-xl border text-gray-500 w-16 ${
-            isActive == "Pearls" ? " bg-black text-white" : ""
-          }`}
-          onClick={() => setActive("Pearls")}
-        >
-          Pearls
-        </button>
-        <button
-          className={` text-xs py-2  rounded-xl border text-gray-500 w-16 ${
-            isActive == "Frill" ? " bg-black text-white" : ""
-          }`}
-          onClick={() => setActive("Frill")}
-        >
-          Frill
-        </button><button
-          className={` text-xs py-2  rounded-xl border text-gray-500 w-16 ${
-            isActive == "Scissors" ? " bg-black text-white" : ""
-          }`}
-          onClick={() => setActive("Scissors")}
-        >
-          Scissors
-        </button>
-        <button
-          className={` text-xs py-2  rounded-xl border text-gray-500 w-16 ${
-            isActive == "Pearls" ? " bg-black text-white" : ""
-          }`}
-          onClick={() => setActive("Pearls")}
-        >
-          Pearls
-        </button>
-        <button
-          className={` text-xs py-2  rounded-xl border text-gray-500 w-16 ${
-            isActive == "Pearls" ? " bg-black text-white" : ""
-          }`}
-          onClick={() => setActive("Pearls")}
-        >
-          Pearls
-        </button>
-        <button
-          className={` text-xs py-2  rounded-xl border text-gray-500 w-16 ${
-            isActive == "Frill" ? " bg-black text-white" : ""
-          }`}
-          onClick={() => setActive("Frill")}
-        >
-          Frill
-        </button><button
-          className={` text-xs py-2  rounded-xl border text-gray-500 w-16 ${
-            isActive == "Scissors" ? " bg-black text-white" : ""
-          }`}
-          onClick={() => setActive("Scissors")}
-        >
-          Scissors
-        </button>
-        <button
-          className={` text-xs py-2  rounded-xl border text-gray-500 w-16 ${
-            isActive == "Pearls" ? " bg-black text-white" : ""
-          }`}
-          onClick={() => setActive("Pearls")}
-        >
-          Pearls
         </button>
       </Carousel>
     </>
   );
 }
 
-export default Categories;
+// {products && products.map((product, index) => {
+//   const productId = product.fields.productImages[0].sys.id;
+//   const imageObject = includes.Asset.find((item) => item.sys.id == productId);
+//   return (
+//     <Product
+//       key={index}
+//       name={product.fields.productName}
+//       price={product.fields.price}
+//       url={imageObject.fields.file.url}
+//       productId={product.sys.id}
+//     />
+//   );
+// })}

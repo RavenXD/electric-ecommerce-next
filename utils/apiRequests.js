@@ -57,19 +57,19 @@ export const getAsset = async (id) => {
   return data;
 };
 
-// export const getCategories = async () => {
-//   const res = await fetch(`${baseUrl}/${process.env.SPACE_ID}/environments/master/entries/?select=fields.productCategory&content_type=electricStoreItems`,
-//   {
-//     cache: "no-store",
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${process.env.API_KEY}`,
-//     },
-//   });
+export const getCategories = async () => {
+  const res = await fetch(`${baseUrl}/${process.env.SPACE_ID}/environments/master/entries/?select=fields.productCategory&content_type=electricStoreItems`,
+  {
+    cache: "no-store",
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.API_KEY}`,
+    },
+  });
 
-//   const data = await res.json();
-//   return data;
-// };
+  const data = await res.json();
+  return data;
+};
 
 // module.exports = { getProducts, getProduct };
