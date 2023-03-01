@@ -7,7 +7,7 @@ import { Carousel } from "react-responsive-carousel";
 const ProductSlider = ({ imageList }) => {
   return (
     <div>
-      <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false}>
+      <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false} showArrows={false}>
         {imageList.map((url, index) => (
           <Image
             key={index}
