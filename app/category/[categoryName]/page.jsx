@@ -1,6 +1,6 @@
+import React from "react";
 import Product from "../../(Components)/Product";
 import Categories from "../../(Components)/Categories";
-import Featured from "../../(Components)/Featured";
 import Header from "../../(Components)/Header";
 import Footer from "../../(Components)/Footer";
 
@@ -11,8 +11,9 @@ export default async function CategoryPage({ params }) {
   return (
     <>
       <Header />
-      <Featured />
-      <Categories />
+      <div className="mt-20">
+        <Categories />
+      </div>
       <main className="m-4 mb-20 w-auto ">
         <div className=" grid gap-2 grid-cols-2">
           {products &&

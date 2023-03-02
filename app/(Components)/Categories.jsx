@@ -27,10 +27,6 @@ function Categories() {
   const [isActive, setActive] = useState("All");
 
   return (
-    <>
-      <div>
-        <h3 className="m-4 text-2xl">Categories</h3>
-      </div>
       <Carousel responsive={responsive} removeArrowOnDeviceType={["tablet", "mobile"]} className=" flex mx-4 justify-between h-16">
         <button
           className={` text-xs py-2  rounded-xl border text-gray-500 w-16 ${
@@ -111,7 +107,6 @@ function Categories() {
           Pearls
         </button>
       </Carousel>
-    </>
   );
 }
 

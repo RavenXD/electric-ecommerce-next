@@ -13,6 +13,7 @@ export default async function Home() {
     <>
       <Header />
       <Featured />
+      <h3 className="m-4 text-2xl">Categories</h3>
       <Categories />
       <main className="m-4 mb-20 w-auto ">
         <div className=" grid gap-2 grid-cols-2">
