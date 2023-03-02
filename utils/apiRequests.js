@@ -32,6 +32,23 @@ export const getProductsByCategory = async (categoryName) => {
   return data;
 };
 
+export const getProductsBySearch = async (search) => {
+  const res = await fetch(
+    `${baseUrl}/${process.env.SPACE_ID}/environments/master/entries/?select=&content_type=electricStoreItems&fields.productName[match]=${search}`,
+    {
+      cache: "no-store",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.API_KEY}`,
+      },
+    }
+  );
+
+  const data = await res.json();
+  return data;
+};
+
 export const getProduct = async (id) => {
   const res = await fetch(`${baseUrl}/${process.env.SPACE_ID}/environments/master/entries/${id}`, {
     cache: "no-store",

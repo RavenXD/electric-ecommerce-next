@@ -1,10 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import whatsapp from "../../assets/whatsapp.png";
-import star from "../../assets/star.svg";
-import { getProduct, getAsset, getAssets } from "../../utils/apiRequests";
-import BackButton from "../(Components)/BackButton";
-import ProductSlider from "../(Components)/ProductSlider";
+import whatsapp from "../../../assets/whatsapp.png";
+import star from "../../../assets/star.svg";
+import { getProduct, getAsset, getAssets } from "../../../utils/apiRequests";
+import ProductSlider from "../../(Components)/ProductSlider";
 
 async function ProductPage({ params }) {
   const product = await getProduct(params.id);
@@ -18,7 +17,6 @@ async function ProductPage({ params }) {
   });
 
   const imageUrlList = imageAssetList.map((element) => element.fields.file.url);
-  console.log(imageUrlList);
   const asset = await getAsset(product.fields.productImages[0].sys.id);
 
   return (
