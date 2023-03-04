@@ -4,15 +4,18 @@ import Categories from "../../(Components)/Categories";
 import Header from "../../(Components)/Header";
 import Footer from "../../(Components)/Footer";
 
-import { getProductsByCategory } from "@/utils/apiRequests";
+import { getCategories, getProductsByCategory } from "@/utils/apiRequests";
 
 export default async function CategoryPage({ params }) {
   const { items: products, includes } = await getProductsByCategory(params.categoryName);
+  const categories = await getCategories();
+  const categoryList = categories.items
+
   return (
     <>
       <Header />
       <div className="mt-20">
-        <Categories />
+        <Categories categoryList={categoryList}/>
       </div>
       <main className="m-4 mb-20 w-auto ">
         <div className=" grid gap-2 grid-cols-2">

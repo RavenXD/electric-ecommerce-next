@@ -36,8 +36,7 @@ export const getProductsByCategory = async (categoryName) => {
 
 export const getProductsBySearch = async (search) => {
   const sanitizedSearch = search.replace(/[^A-Za-z0-9\s%]/g, "");
-  console.log(sanitizedSearch);
-
+  
   const res = await fetch(
     `${baseUrl}/${process.env.SPACE_ID}/environments/master/entries/?select=&content_type=electricStoreItems&fields.productName[match]=${sanitizedSearch}`,
     {
