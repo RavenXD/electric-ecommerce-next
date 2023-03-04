@@ -17,7 +17,7 @@ export default async function SearchPage({ params }) {
           className={products.length == 0 ? "flex flex-1 justify-center" : "grid gap-2 grid-cols-2"}
         >
           {products.length == 0 ? (
-            <div className=""> Products Not found</div>
+            <div className=""> Products Not found {params.search}</div>
           ) : (
             products.map((product, index) => {
               const productId = product.fields.productImages[0].sys.id;

@@ -4,10 +4,28 @@ import whatsapp from "../../../assets/whatsapp.png";
 import star from "../../../assets/star.svg";
 import { getProduct, getAsset, getAssets } from "../../../utils/apiRequests";
 import ProductSlider from "../../(Components)/ProductSlider";
+import Footer from "@/app/(Components)/Footer";
 
 async function ProductPage({ params }) {
   const product = await getProduct(params.id);
   const assets = await getAssets();
+
+  if (product.sys.id === "NotFound") {
+    return (
+      <>
+        <div className="flex items-center justify-center h-screen flex-col ">
+          <div className="text-xl">Product Not Found</div>
+          <Link
+            className="text-xs py-2 mt-6 rounded-xl border w-16 text-center bg-black text-white"
+            href="/"
+          >
+            Home
+          </Link>
+        </div>
+        <Footer />
+      </>
+    );
+  }
 
   const imageAssetList = [];
   const assetsIds = product.fields.productImages.map((element) => element.sys.id);

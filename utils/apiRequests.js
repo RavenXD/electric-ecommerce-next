@@ -16,8 +16,10 @@ export const getProducts = async () => {
 };
 
 export const getProductsByCategory = async (categoryName) => {
+  const sanitizedCategory = sanitize(categoryName);
+
   const res = await fetch(
-    `${baseUrl}/${process.env.SPACE_ID}/environments/master/entries/?select=&content_type=electricStoreItems&fields.productCategory[all]=${categoryName}`,
+    `${baseUrl}/${process.env.SPACE_ID}/environments/master/entries/?select=&content_type=electricStoreItems&fields.productCategory[all]=${sanitizedCategory}`,
     {
       cache: "no-store",
       method: "GET",
@@ -33,8 +35,11 @@ export const getProductsByCategory = async (categoryName) => {
 };
 
 export const getProductsBySearch = async (search) => {
+  const sanitizedSearch = search.replace(/[^A-Za-z0-9\s%]/g, "");
+  console.log(sanitizedSearch);
+
   const res = await fetch(
-    `${baseUrl}/${process.env.SPACE_ID}/environments/master/entries/?select=&content_type=electricStoreItems&fields.productName[match]=${search}`,
+    `${baseUrl}/${process.env.SPACE_ID}/environments/master/entries/?select=&content_type=electricStoreItems&fields.productName[match]=${sanitizedSearch}`,
     {
       cache: "no-store",
       method: "GET",
@@ -50,14 +55,19 @@ export const getProductsBySearch = async (search) => {
 };
 
 export const getProduct = async (id) => {
-  const res = await fetch(`${baseUrl}/${process.env.SPACE_ID}/environments/master/entries/${id}`, {
-    cache: "no-store",
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.API_KEY}`,
-    },
-  });
+  const sanitizedId = sanitize(id);
+
+  const res = await fetch(
+    `${baseUrl}/${process.env.SPACE_ID}/environments/master/entries/${sanitizedId}`,
+    {
+      cache: "no-store",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.API_KEY}`,
+      },
+    }
+  );
 
   const data = await res.json();
 
@@ -79,14 +89,19 @@ export const getAssets = async () => {
 };
 
 export const getAsset = async (id) => {
-  const res = await fetch(`${baseUrl}/${process.env.SPACE_ID}/environments/master/assets/${id}`, {
-    cache: "no-store",
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.API_KEY}`,
-    },
-  });
+  const sanitizedId = sanitize(id);
+
+  const res = await fetch(
+    `${baseUrl}/${process.env.SPACE_ID}/environments/master/assets/${sanitizedId}`,
+    {
+      cache: "no-store",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.API_KEY}`,
+      },
+    }
+  );
 
   const data = await res.json();
   return data;
@@ -109,4 +124,7 @@ export const getCategories = async () => {
   return data;
 };
 
-// module.exports = { getProducts, getProduct };
+function sanitize(string) {
+  string = string.replace(/[^A-Za-z0-9\s]/g, "");
+  return string;
+}
